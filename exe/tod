@@ -2,4 +2,4 @@
 
 require 'tod'
 
-Tod.work
+Tod.from_path('.travis.yml')

@@ -1,7 +1,8 @@
-require "tod/version"
+require 'tod/version'
+require 'tod/travis'
 
 module Tod
-  def self.work
-    puts "Running scripts from .travis.yml"
+  def self.from_path(path)
+    Travis.new
   end
 end
