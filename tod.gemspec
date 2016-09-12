@@ -8,6 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Tod::VERSION
   spec.authors       = ["mckomo"]
   spec.email         = ["mckomo@gmail.com"]
+  spec.license       = 'MIT'
 
   spec.summary       = "Run travis.yml in your terminal"
   spec.description   = %q{Helper utility to run scripts from .travis.yml file}
