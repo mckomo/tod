@@ -6,9 +6,16 @@ describe Tod do
     expect(Tod::VERSION).not_to be nil
   end
 
-  it 'can be initilize with a file path' do
-    tod = Tod.build(path: 'spec/support/.travis.yml')
-    expect(tod).to be_a(Tod::Runner)
+  describe '.build' do
+
+    it 'returns Runner' do
+      expect(Tod.build).to be_a(Tod::Runner)
+    end
+
+    it 'accepts custom path to yaml file ' do
+      Tod.build(from_yml: 'spec/support/.travis.yml')
+    end
+
   end
 
 end
