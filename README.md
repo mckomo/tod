@@ -1,36 +1,48 @@
 # Tod
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/tod`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Tod runs commands from your `.travis.yml` file. Type `tod` instead of `docker run -v $(pwd):/my-app -it my-app some-tests` to run your tests
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Install it yourself simply as:
 
-```ruby
-gem 'tod'
+```bash
+$ gem install tod
 ```
 
-And then execute:
+Check the installation with following:
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install tod
+```bash
+$ which tod
+/path/to/tod
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+#### tod
 
-## Development
+Runs scripts from the `script` section.
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```bash
+tod # or tod script
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+#### tod before
+
+Runs scripts from the `before_script` section.
+
+```bash
+tod before
+```
+
+#### tod setup
+
+Runs scripts from the `before_install` section.
+
+```bash
+tod setup
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/tod. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
+Bug reports and pull requests are welcome on GitHub at [https://github.com/mckomo/tod](https://github.com/mckomo/tod). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
