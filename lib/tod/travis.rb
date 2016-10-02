@@ -21,8 +21,12 @@ module Tod
       Array(@yml[:before_script]) || []
     end
 
-    def install
-      Array(@yml[:install]) || []
+    def setup
+      Array(@yml[:before_install]) || []
+    end
+
+    def section(section)
+      send(section.to_sym)
     end
 
   end
