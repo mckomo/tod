@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Tod::Travis do
 
-  subject { Tod::Travis.new yml }
+  subject { Tod::Travis.new yml } # yml represents .travis.yml
 
   describe '.env' do
 
@@ -14,12 +14,12 @@ describe Tod::Travis do
 
   end
 
-  describe '.script' do
+  describe '.setup' do
 
-    let(:yml) { Hash('script' => 'rspec') }
+    let(:yml) { Hash('before_install' => ['apt-get update', 'apt-get install git']) }
 
-    it 'returns array of test scripts' do
-      expect(subject.script).to eq(['rspec'])
+    it 'returns array of before install scripts' do
+      expect(subject.setup).to eq(['apt-get update', 'apt-get install git'])
     end
 
   end
@@ -34,12 +34,26 @@ describe Tod::Travis do
 
   end
 
-  describe '.install' do
+  describe '.script' do
 
-    let(:yml) { Hash('install' => ['apt-get update', 'apt-get install git']) }
+    let(:yml) { Hash('script' => 'rspec') }
 
-    it 'returns array of setup scripts' do
-      expect(subject.install).to eq(['apt-get update', 'apt-get install git'])
+    it 'returns array of test scripts' do
+      expect(subject.script).to eq(['rspec'])
+    end
+
+  end
+
+  describe '.section' do
+
+    let(:yml) { Hash('before_install' => 'setup-command', 'script' => 'test-command' ) }
+
+    it 'returns given section from the travis file' do
+      setup_section = subject.section('setup')
+      script_section = subject.section(:script)
+
+      expect(setup_section).to eq(['setup-command'])
+      expect(script_section).to eq(['test-command'])
     end
 
   end
