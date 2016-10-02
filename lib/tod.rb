@@ -2,13 +2,18 @@ require 'yaml'
 
 require 'tod/version'
 require 'tod/travis'
+require 'tod/result'
+require 'tod/executor'
+require 'tod/runner'
 require 'tod/runner'
 
 
 module Tod
 
   def self.build(from_yml: '.travis.yml')
-    Runner.new({})
+    yaml = YAML.load_file(from_yml)
+    travis = Travis.new(yaml)
+    Runner.new(travis)
   end
 
 end
