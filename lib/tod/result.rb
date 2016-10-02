@@ -3,7 +3,7 @@ module Tod
 
     attr_reader :code, :output
 
-    def initialize(code, output)
+    def initialize(code, output = '')
       @code, @output = code, output
     end
 
