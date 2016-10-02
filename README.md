@@ -7,7 +7,7 @@ Tod runs commands from your `.travis.yml` file. Type `tod` instead of `docker ru
 Install it yourself simply as:
 
 ```bash
-$ gem install tod
+$ gem install tod-travis
 ```
 
 Check the installation with following:
