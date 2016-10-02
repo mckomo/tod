@@ -36,7 +36,7 @@ describe Tod::Travis do
 
   describe '.install' do
 
-    let(:yml) { Hash('before_install' => ['apt-get update', 'apt-get install git']) }
+    let(:yml) { Hash('install' => ['apt-get update', 'apt-get install git']) }
 
     it 'returns array of setup scripts' do
       expect(subject.install).to eq(['apt-get update', 'apt-get install git'])

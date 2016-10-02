@@ -5,18 +5,23 @@ require 'tod'
 
 Clamp do
 
-  SECTIONS = ['script', 'before', 'install']
+  SECTIONS = ['setup', 'before', 'script']
 
   option ['-p', '--path'], 'PATH', 'Path to .travis.yml', :default => '.travis.yml'
 
-  parameter '[SECTION]', 'section from .travis.yml to execute', :default => 'script' do |s|
-    unless SECTIONS.include? s
+  parameter '[SECTION]', 'section from .travis.yml to execute', :default => :script do |section|
+    unless SECTIONS.include? section
       raise ArgumentError.new "Try #{SECTIONS * ', '}."
     end
+
+    section.to_sym
   end
 
   def execute
-    Tod.build(from_yml: path).run(section)
+    runner = Tod.build(from_yml: path)
+    code = runner.run(section)
+
+    exit code
   end
 
 end

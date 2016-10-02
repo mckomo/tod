@@ -5,7 +5,7 @@ module Tod
 
   class Travis
 
-    def initialize(yml)
+    def initialize(yml = {})
       @yml = yml.symbolize_keys
     end
 
@@ -22,7 +22,7 @@ module Tod
     end
 
     def install
-      Array(@yml[:before_install]) || []
+      Array(@yml[:install]) || []
     end
 
   end
