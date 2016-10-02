@@ -1,5 +1,11 @@
-sudo: false
+sudo: required
 language: ruby
-rvm:
-  - 2.3.1
-before_install: gem install bundler -v 1.12.5
+
+services:
+  - docker
+
+before_script:
+  - docker build -t tod .
+
+script:
+  - docker run -v $(pwd):/tod -it tod rspec
