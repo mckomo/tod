@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'tod/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "tod"
+  spec.name          = "tod-travis"
   spec.version       = Tod::VERSION
   spec.authors       = ["mckomo"]
   spec.email         = ["mckomo@gmail.com"]
