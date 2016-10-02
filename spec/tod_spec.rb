@@ -13,7 +13,7 @@ describe Tod do
     end
 
     it 'accepts custom path to yaml file ' do
-      Tod.build(from_yml: 'spec/support/.travis.yml')
+      Tod.build(from_yml: '.travis.yml')
     end
 
   end
