@@ -1,5 +1,7 @@
 # Tod
 
+[![Build Status](https://travis-ci.org/mckomo/tod.svg?branch=master)](https://travis-ci.org/mckomo/tod) [![Code Climate](https://codeclimate.com/github/mckomo/tod/badges/gpa.svg)](https://codeclimate.com/github/mckomo/tod)
+
 Tod runs commands from your `.travis.yml` file. Type `tod` instead of `docker run -v $(pwd):/my-app -it my-app some-tests` to run your tests
 
 ## Installation
