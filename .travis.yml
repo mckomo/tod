@@ -8,4 +8,4 @@ before_script:
   - docker build -t tod .
 
 script:
-  - docker run -v $(pwd):/tod -it tod rspec
+  - docker run -v $(pwd):/tod -t tod rspec

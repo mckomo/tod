@@ -4,8 +4,8 @@ describe Tod::Runner do
 
   let(:travis) { Tod::Travis.new }
   let(:executor) { Tod::Executor.new }
-  let(:environment) { ENV }
   let(:result) { Tod::Result.new }
+  let(:environment) { ENV }
 
   subject(:runner) { Tod::Runner.new(travis, executor: executor, environment: environment) }
 
