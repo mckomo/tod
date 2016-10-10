@@ -1,10 +1,10 @@
 module Tod
   class Result
 
-    attr_reader :code, :output
+    attr_reader :code
 
-    def initialize(code, output = '')
-      @code, @output = code, output
+    def initialize(code)
+      @code = code.to_i
     end
 
     def ok?
