@@ -15,9 +15,7 @@ module Tod
 
       @travis.section(section).each do |command|
 
-        result = @executor.execute(command)
-
-        puts result.output unless result.output.empty?
+        result = @executor.execute(command) { |line| puts line }
 
         if result.error?
           return result.code

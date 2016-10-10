@@ -1,23 +1,22 @@
 require 'spec_helper'
 
-describe Tod::Runner do
+describe Tod::Executor do
 
   subject(:executor) { Tod::Executor.new }
 
   describe '.execute' do
 
     it 'returns a Result' do
-      expect(executor.execute 'whoami > /dev/null').to be_a(Tod::Result)
+      expect(executor.execute 'whoami').to be_a(Tod::Result)
     end
 
     it 'captures command exit code' do
-      result = executor.execute 'exit 124'
+      result = executor.execute('exit 124')
       expect(result.code).to eq(124)
     end
 
-    it 'captures command standard output' do
-      result = executor.execute 'echo -n tod'
-      expect(result.output).to eq(['tod'])
+    it 'yields lines to passed block' do
+      expect { |b| executor.execute('echo -n tod', &b) }.to yield_with_args('tod')
     end
 
   end
