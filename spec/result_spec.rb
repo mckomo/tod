@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Tod::Result do
-
   let(:code) { 0 }
 
   subject { Tod::Result.new(code) }
@@ -19,7 +18,6 @@ describe Tod::Result do
   end
 
   context 'when exit code is greater than zero' do
-
     let(:code) { 255 }
 
     describe '.ok?' do
@@ -29,7 +27,5 @@ describe Tod::Result do
     describe '.error?' do
       it { expect(subject.error?).to be_truthy }
     end
-
   end
-
 end

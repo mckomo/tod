@@ -4,18 +4,16 @@ require 'clamp'
 require 'tod'
 
 Clamp do
+  SECTIONS = %i(setup before script).freeze
 
-  SECTIONS = ['setup', 'before', 'script']
+  option ['-p', '--path'],
+         'PATH',
+         'Path to .travis.yml',
+         default: '.travis.yml'
 
-  option ['-p', '--path'], 'PATH', 'Path to .travis.yml', :default => '.travis.yml'
-
-  parameter '[SECTION]', 'section from .travis.yml to execute', :default => :script do |section|
-    unless SECTIONS.include? section
-      raise ArgumentError.new "Try #{SECTIONS * ', '}."
-    end
-
-    section.to_sym
-  end
+  parameter '[SECTION]',
+            'Section from .travis.yml to be executed',
+            default: 'script'
 
   def execute
     runner = Tod.build(from_yml: path)
@@ -24,4 +22,12 @@ Clamp do
     exit code
   end
 
+  # Validated section argument
+  def section=(section)
+    unless SECTIONS.include? section
+      signal_usage_error "Unsupported section! Try #{SECTIONS * ', '}."
+    end
+    
+    @section = section.to_sym
+  end
 end

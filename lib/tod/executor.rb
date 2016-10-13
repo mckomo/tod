@@ -2,9 +2,8 @@ require 'open3'
 
 module Tod
   class Executor
-
     def execute(command, &block)
-      process = Open3.popen2e("#{command}") do |stdin, stdoe, wait_thread|
+      process = Open3.popen2e(command.to_s) do |_, stdoe, wait_thread|
         read_thread(stdoe, &block).join
         wait_thread.value
       end
@@ -19,6 +18,5 @@ module Tod
         stream.each { |line| yield(line) if block_given? }
       end
     end
-
   end
 end

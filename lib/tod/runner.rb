@@ -2,7 +2,6 @@ require 'open3'
 
 module Tod
   class Runner
-
     def initialize(travis, executor: Executor.new, environment: ENV)
       @travis = travis
       @executor = executor
@@ -10,21 +9,14 @@ module Tod
     end
 
     def run(section)
-
       setup_env
 
       @travis.section(section).each do |command|
-
         result = @executor.execute(command) { |line| puts line }
-
-        if result.error?
-          return result.code
-        end
-
+        return result.code if result.error?
       end
 
-      result_code = 0
-
+      Result::OK
     end
 
     private
@@ -34,6 +26,5 @@ module Tod
         @environment.store(key.to_s, val.to_s)
       end
     end
-
   end
 end

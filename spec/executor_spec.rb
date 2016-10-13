@@ -1,13 +1,11 @@
 require 'spec_helper'
 
 describe Tod::Executor do
-
   subject(:executor) { Tod::Executor.new }
 
   describe '.execute' do
-
     it 'returns a Result' do
-      expect(executor.execute 'whoami').to be_a(Tod::Result)
+      expect(executor.execute('whoami')).to be_a(Tod::Result)
     end
 
     it 'captures command exit code' do
@@ -16,9 +14,8 @@ describe Tod::Executor do
     end
 
     it 'yields lines to passed block' do
-      expect { |b| executor.execute('echo -n tod', &b) }.to yield_with_args('tod')
+      command = 'echo -n tod'
+      expect { |b| executor.execute(command, &b) }.to yield_with_args('tod')
     end
-
   end
-
 end
