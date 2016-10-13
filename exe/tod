@@ -27,7 +27,7 @@ Clamp do
     unless SECTIONS.include? section
       signal_usage_error "Unsupported section! Try #{SECTIONS * ', '}."
     end
-    
+
     @section = section.to_sym
   end
 end

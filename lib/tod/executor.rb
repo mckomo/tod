@@ -4,6 +4,7 @@ module Tod
   class Executor
     def execute(command, &block)
       process = Open3.popen2e(command.to_s) do |_, stdoe, wait_thread|
+        # Wait for read thread to yeild output
         read_thread(stdoe, &block).join
         wait_thread.value
       end
