@@ -7,13 +7,12 @@ require 'tod/executor'
 require 'tod/runner'
 require 'tod/runner'
 
-
 module Tod
+  module_function
 
-  def self.build(from_yml: '.travis.yml')
+  def build(from_yml: '.travis.yml')
     yaml = YAML.load_file(from_yml)
     travis = Travis.new(yaml)
     Runner.new(travis)
   end
-
 end

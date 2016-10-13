@@ -2,9 +2,7 @@ require 'yaml'
 require 'active_support/hash_with_indifferent_access'
 
 module Tod
-
   class Travis
-
     def initialize(yml = {})
       @yml = yml.symbolize_keys
     end
@@ -28,6 +26,5 @@ module Tod
     def section(section)
       send(section.to_sym)
     end
-
   end
 end
