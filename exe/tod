@@ -4,7 +4,7 @@ require 'clamp'
 require 'tod'
 
 Clamp do
-  SECTIONS = %i(setup before script).freeze
+  SECTIONS = %i[setup before script].freeze
 
   option ['-p', '--path'],
          'PATH',
@@ -27,7 +27,7 @@ Clamp do
     unless SECTIONS.include? section
       signal_usage_error "Unsupported section! Try #{SECTIONS * ', '}."
     end
-    
+
     @section = section.to_sym
   end
 end
